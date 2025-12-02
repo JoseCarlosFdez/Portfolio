@@ -3,36 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>José Carlos Fernández - Portfolio</title>
+    <title>José Carlos Fernández - Portfolio de Ingeniería Informática</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-    <header>
-        <h1>José Carlos Fernández</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html" class="active">Inicio</a></li>
-                <li><a href="projects.html">Proyectos</a></li>
-                <li><a href="skills.html">Habilidades</a></li>
-                <li><a href="education.html">Formación</a></li>
-                <li><a href="contact.html">Contacto</a></li>
-            </ul>
-        </nav>
+    <header class="main-header">
+        <div class="container">
+            <h1 class="logo">José Carlos Fernández</h1>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link active"><i class="fas fa-home"></i> Inicio</a></li>
+                    <li><a href="projects.html" class="nav-link"><i class="fas fa-folder-open"></i> Proyectos</a></li>
+                    <li><a href="skills.html" class="nav-link"><i class="fas fa-laptop-code"></i> Habilidades</a></li>
+                    <li><a href="education.html" class="nav-link"><i class="fas fa-graduation-cap"></i> Formación</a></li>
+                    <li><a href="contact.html" class="nav-link"><i class="fas fa-envelope"></i> Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
-    <section class="hero">
-        <img src="assets/img/profile.png" alt="Foto de perfil" class="profile-pic">
-        <h2>Estudiante de Ingeniería Informática</h2>
-        <p>
-            Soy estudiante de la <strong>Universidad de Castilla-La Mancha</strong> desde 2022, 
-            y graduado en <strong>Bachillerato Tecnológico</strong> del 
-            <em>IES Bernardo de Balbuena</em> (Valdepeñas, Ciudad Real).
-        </p>
-        <a href="assets/cv/CV_JoseCarlosFernandez.pdf" class="btn" download>📄 Descargar CV</a>
-    </section>
+    <main>
+        <section class="hero-section container">
+            <div class="hero-content">
+                <hgroup>
+                    <h2 class="hero-title">¡Hola! Soy José Carlos.</h2>
+                    <p class="hero-subtitle">Estudiante de Ingeniería Informática</p>
+                </hgroup>
+                
+                <img src="assets/img/profile.png" alt="Foto de perfil profesional de José Carlos Fernández" class="profile-pic">
+                
+                <p class="bio-text">
+                    Actualmente cursando mis estudios en la prestigiosa <strong>Universidad de Castilla-La Mancha</strong> (desde 2022). 
+                    Mi base académica se complementa con un <strong>Bachillerato Tecnológico</strong>, obtenido en el <em>IES Bernardo de Balbuena</em> (Valdepeñas, Ciudad Real).
+                    Estoy apasionado por el desarrollo de software y la resolución de problemas complejos.
+                </p>
+                
+                <a href="assets/cv/CV_JoseCarlosFernandez.pdf" class="btn primary-btn" download aria-label="Descargar mi Currículum Vitae">
+                    <i class="fas fa-download"></i> Descargar CV
+                </a>
+            </div>
+        </section>
+        
+        <section class="quick-links container">
+            </section>
+    </main>
 
-    <footer>
-        <p>© 2025 José Carlos Fernández</p>
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2025 José Carlos Fernández | Desarrollador en formación.</p>
+        </div>
     </footer>
 </body>
 </html>
