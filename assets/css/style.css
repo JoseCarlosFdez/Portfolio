@@ -1,90 +1,210 @@
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+/* --- 1. CONFIGURACIÓN BÁSICA (RESET Y FUENTES) --- */
+
+:root {
+    /* Paleta de Colores Profesional */
+    --color-primary: #007bff; /* Azul corporativo */
+    --color-secondary: #6c757d; /* Gris para acentos */
+    --color-dark: #212529; /* Negro para textos principales */
+    --color-light: #f8f9fa; /* Fondo claro */
+    --color-white: #ffffff;
+    
+    /* Tipografía */
+    --font-primary: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    
+    /* Espaciado */
+    --spacing-md: 1.5rem;
+    --spacing-lg: 3rem;
+}
+
+/* Reset básico para mejor consistencia entre navegadores */
+* {
     margin: 0;
-    background-color: #f9f9f9;
-    color: #222;
-}
-
-header {
-    background-color: #1f3c88;
-    color: white;
-    padding: 20px 10px;
-    text-align: center;
-}
-
-header h1 {
-    margin: 0;
-}
-
-nav ul {
-    list-style: none;
     padding: 0;
+    box-sizing: border-box;
 }
 
-nav ul li {
-    display: inline-block;
-    margin: 0 10px;
+body {
+    font-family: var(--font-primary);
+    line-height: 1.6;
+    color: var(--color-dark);
+    background-color: var(--color-light);
+    transition: background-color 0.3s;
 }
 
-nav ul li a {
-    color: white;
+/* Contenedor centralizado para ancho máximo */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+}
+
+
+/* --- 2. ENCABEZADO Y NAVEGACIÓN (HEADER) --- */
+
+.main-header {
+    background-color: var(--color-white);
+    border-bottom: 3px solid var(--color-primary); /* Línea de acento */
+    padding: 1rem 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.main-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--color-dark);
+    text-transform: uppercase;
+}
+
+.nav-list {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+}
+
+.nav-link {
     text-decoration: none;
-    font-weight: bold;
+    color: var(--color-secondary);
+    font-weight: 500;
+    padding: 0.5rem 0;
+    transition: color 0.3s, border-bottom 0.3s;
 }
 
-nav ul li a.active {
-    text-decoration: underline;
+.nav-link i {
+    margin-right: 0.4rem;
 }
 
-.hero, .projects, .skills, .education, .contact {
-    max-width: 900px;
-    margin: 40px auto;
-    background: white;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+.nav-link:hover,
+.nav-link.active {
+    color: var(--color-primary);
+    border-bottom: 2px solid var(--color-primary);
 }
 
-.hero h2 {
-    margin-top: 10px;
+
+/* --- 3. SECCIÓN HERO (PRESENTACIÓN PRINCIPAL) --- */
+
+.hero-section {
+    text-align: center;
+    padding: var(--spacing-lg) 0;
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .profile-pic {
-    width: 140px;
+    width: 180px;
+    height: 180px;
     border-radius: 50%;
-    display: block;
-    margin: 0 auto 20px auto;
+    object-fit: cover;
+    margin-bottom: var(--spacing-md);
+    border: 5px solid var(--color-white);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
+
+.hero-title {
+    font-size: 2.8rem;
+    color: var(--color-dark);
+    margin-bottom: 0.5rem;
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    color: var(--color-primary);
+    font-weight: 300;
+    margin-bottom: var(--spacing-md);
+}
+
+.bio-text {
+    max-width: 700px;
+    font-size: 1.1rem;
+    margin-bottom: var(--spacing-lg);
+    color: #495057; /* Un gris oscuro para buen contraste */
+}
+
+/* Énfasis en el texto */
+.bio-text strong {
+    color: var(--color-primary);
+    font-weight: 600;
+}
+
+
+/* --- 4. BOTONES (CTAs) --- */
 
 .btn {
     display: inline-block;
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: #1f3c88;
-    color: white;
+    padding: 0.8rem 2rem;
+    border-radius: 4px;
     text-decoration: none;
-    border-radius: 6px;
+    font-weight: 600;
+    text-transform: uppercase;
+    transition: background-color 0.3s, transform 0.2s;
 }
 
-.project-card {
-    border: 1px solid #ddd;
-    padding: 20px;
-    margin-bottom: 20px;
-    border-radius: 8px;
-    background-color: #fafafa;
+.primary-btn {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    border: 2px solid var(--color-primary);
 }
 
-.project-card a {
-    display: inline-block;
-    margin-top: 10px;
-    color: #1f3c88;
+.primary-btn:hover {
+    background-color: #0056b3; /* Un azul más oscuro al pasar el ratón */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-footer {
+.btn i {
+    margin-right: 0.5rem;
+}
+
+
+/* --- 5. PIE DE PÁGINA (FOOTER) --- */
+
+.main-footer {
+    background-color: var(--color-dark);
+    color: var(--color-secondary);
+    padding: 1.5rem 0;
     text-align: center;
-    padding: 15px;
-    background-color: #1f3c88;
-    color: white;
-    margin-top: 40px;
+    margin-top: var(--spacing-lg); /* Espacio al final de la página */
 }
 
+.main-footer p {
+    font-size: 0.9rem;
+}
+
+/* --- 6. RESPONSIVE (Móviles) --- */
+
+@media (max-width: 768px) {
+    .main-header .container {
+        flex-direction: column;
+    }
+
+    .logo {
+        margin-bottom: 1rem;
+    }
+
+    .nav-list {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.7rem;
+    }
+    
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.2rem;
+    }
+
+    .bio-text {
+        font-size: 1rem;
+    }
+}
