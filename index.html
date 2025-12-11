@@ -13,18 +13,18 @@
             <h1 class="logo">José Carlos Fernández</h1>
             <nav class="main-nav">
                 <ul class="nav-list">
-                    <li><a href="index.html" class="nav-link active"><i class="fas fa-home"></i> Inicio</a></li>
-                    <li><a href="projects.html" class="nav-link"><i class="fas fa-folder-open"></i> Proyectos</a></li>
-                    <li><a href="skills.html" class="nav-link"><i class="fas fa-laptop-code"></i> Habilidades</a></li>
-                    <li><a href="education.html" class="nav-link"><i class="fas fa-graduation-cap"></i> Formación</a></li>
-                    <li><a href="contact.html" class="nav-link"><i class="fas fa-envelope"></i> Contacto</a></li>
+                    <li><a href="#inicio" class="nav-link"><i class="fas fa-home"></i> Inicio</a></li>
+                    <li><a href="#proyectos" class="nav-link"><i class="fas fa-folder-open"></i> Proyectos</a></li>
+                    <li><a href="#habilidades" class="nav-link"><i class="fas fa-laptop-code"></i> Habilidades</a></li>
+                    <li><a href="#formacion" class="nav-link"><i class="fas fa-graduation-cap"></i> Formación</a></li>
+                    <li><a href="#contacto" class="nav-link"><i class="fas fa-envelope"></i> Contacto</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
     <main>
-        <section class="hero-section container">
+        <section id="inicio" class="hero-section container">
             <div class="hero-content">
                 <hgroup>
                     <h2 class="hero-title">¡Hola! Soy José Carlos.</h2>
@@ -44,9 +44,110 @@
                 </a>
             </div>
         </section>
-        
-        <section class="quick-links container">
-            </section>
+
+        <section id="proyectos" class="projects-section container">
+            <h2 class="section-title"><i class="fas fa-cubes"></i> Proyectos Destacados</h2>
+            <p class="section-subtitle">Una muestra de mis trabajos más relevantes.</p>
+
+            <div class="project-grid">
+                <article class="project-card">
+                    <h3>Laboratorio de Sistemas Distribuidos</h3>
+                    <p>Proyecto de prácticas con arquitectura de **sistemas distribuidos** usando **Python**, **Docker** e **Ice**. Microservicios y comunicación remota.</p>
+                    <a href="https://github.com/JoseCarlosFdez/Lab_SSDD" target="_blank" class="btn secondary-btn"><i class="fab fa-github"></i> Ver en GitHub</a>
+                </article>
+
+                <article class="project-card">
+                    <h3>App de Cartas Pokémon (En desarrollo)</h3>
+                    <p>Aplicación web para el intercambio seguro de cartas físicas. Desarrollo Full Stack enfocado en usabilidad.</p>
+                    <a href="https://github.com/JoseCarlosFdez/Lab_SSDD" target="_blank" class="btn secondary-btn"><i class="fab fa-github"></i> Ver en GitHub</a>
+                </article>
+
+                <article class="project-card">
+                    <h3>Creación de Pokémon (IPOII)</h3>
+                    <p>Diseño y programación de una criatura con habilidades propias. Demostración de lógica de programación y POO.</p>
+                    <a href="https://github.com/JoseCarlosFdez/Corphish_laboratorio_IPOII" target="_blank" class="btn secondary-btn"><i class="fab fa-github"></i> Ver en GitHub</a>
+                </article>
+            </div>
+        </section>
+
+        <section id="habilidades" class="skills-section container">
+            <h2 class="section-title"><i class="fas fa-cogs"></i> Habilidades Técnicas</h2>
+            <p class="section-subtitle">Tecnologías y herramientas que domino.</p>
+
+            <div class="skill-group">
+                <h3><i class="fas fa-code"></i> Lenguajes</h3>
+                <ul class="skill-list">
+                    <li class="skill-item"><strong>Python</strong> (Backend/Scripting)</li>
+                    <li class="skill-item"><strong>Java</strong> (POO)</li>
+                    <li class="skill-item"><strong>C++</strong> (Sistemas)</li>
+                </ul>
+            </div>
+
+            <div class="skill-group">
+                <h3><i class="fas fa-layer-group"></i> Frameworks</h3>
+                <ul class="skill-list">
+                    <li class="skill-item"><strong>Flask / Django</strong></li>
+                    <li class="skill-item"><strong>React</strong> (Básico)</li>
+                </ul>
+            </div>
+            
+            <div class="skill-group">
+                <h3><i class="fas fa-tools"></i> Herramientas</h3>
+                <ul class="skill-list">
+                    <li class="skill-item"><strong>Docker</strong></li>
+                    <li class="skill-item"><strong>Git / GitHub</strong></li>
+                </ul>
+            </div>
+
+             <div class="skill-group">
+                <h3><i class="fas fa-cloud"></i> Redes y Cloud</h3>
+                <ul class="skill-list">
+                    <li class="skill-item"><strong>Azure</strong></li>
+                    <li class="skill-item"><strong>SNMP / MIB-II</strong></li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="formacion" class="education-section container">
+            <h2 class="section-title"><i class="fas fa-graduation-cap"></i> Trayectoria Académica</h2>
+            <p class="section-subtitle">Mi camino formativo.</p>
+
+            <div class="timeline">
+                <article class="edu-item">
+                    <h3>Grado en Ingeniería Informática</h3>
+                    <p class="institution">Universidad de Castilla-La Mancha</p>
+                    <p class="date">2022 - Actualidad</p>
+                </article>
+
+                <article class="edu-item">
+                    <h3>Bachillerato Tecnológico</h3>
+                    <p class="institution">IES Bernardo de Balbuena</p>
+                    <p class="date">Valdepeñas, Ciudad Real</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="contacto" class="contact-section container">
+            <h2 class="section-title"><i class="fas fa-envelope"></i> Contacto</h2>
+            <p class="section-subtitle">¿Hablamos?</p>
+
+            <div class="contact-methods">
+                <ul class="contact-list">
+                    <li>
+                        <i class="fas fa-envelope-open-text"></i>
+                        <strong>Email:</strong> <a href="mailto:josecarlos@example.com" class="contact-link">josecarlos@example.com</a>
+                    </li>
+                    <li>
+                        <i class="fab fa-linkedin"></i>
+                        <strong>LinkedIn:</strong> <a href="#" class="contact-link">Perfil Profesional</a>
+                    </li>
+                    <li>
+                        <i class="fab fa-github"></i>
+                        <strong>GitHub:</strong> <a href="https://github.com/JoseCarlosFdez" target="_blank" class="contact-link">JoseCarlosFdez</a>
+                    </li>
+                </ul>
+            </div>
+        </section>
     </main>
 
     <footer class="main-footer">

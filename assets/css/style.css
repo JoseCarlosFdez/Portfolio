@@ -1,5 +1,12 @@
 /* --- 1. CONFIGURACIÓN BÁSICA (RESET Y FUENTES) --- */
+html {
+    scroll-behavior: smooth;
+}
 
+/* Ajuste opcional para que el menú fijo no tape el título de la sección al bajar */
+section {
+    scroll-margin-top: 80px; /* Ajusta este valor según la altura de tu menú header */
+}
 :root {
     /* Paleta de Colores Profesional */
     --color-primary: #007bff; /* Azul corporativo */
