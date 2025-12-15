@@ -28,7 +28,7 @@
             <div class="hero-content">
                 <hgroup>
                     <h2 class="hero-title">¡Hola! Soy José Carlos.</h2>
-                    <p class="hero-subtitle">Estudiante de Ingeniería Informática</p>
+                    <p class="hero-subtitle">Soy <span class="typed-text"></span></p>
                 </hgroup>
                 
                 <img src="assets/img/profile.png" alt="Foto de perfil profesional de José Carlos Fernández" class="profile-pic">
@@ -158,5 +158,48 @@
             <p>&copy; 2025 José Carlos Fernández | Desarrollador en formación.</p>
         </div>
     </footer>
+
+    <script src="https://unpkg.com/scrollreveal"></script>
+
+    <script>
+        const sr = ScrollReveal({
+            origin: 'top',
+            distance: '60px',
+            duration: 2500,
+            delay: 400,
+            // reset: true // Si quieres que la animación se repita al subir y bajar
+        });
+
+        // Animación del Hero (Inicio)
+        sr.reveal('.hero-content .profile-pic', {origin: 'top', delay: 500});
+        sr.reveal('.hero-content hgroup', {origin: 'bottom', delay: 600});
+        sr.reveal('.hero-content .bio-text', {origin: 'bottom', delay: 700});
+        sr.reveal('.hero-content .btn', {origin: 'bottom', delay: 800});
+
+        // Animación común para los títulos de sección
+        sr.reveal('.section-title', {origin: 'left', distance: '100px', interval: 100});
+        sr.reveal('.section-subtitle', {origin: 'right', delay: 200});
+
+        // Animación de las Tarjetas de Proyectos (efecto cascada)
+        sr.reveal('.project-card', {interval: 200}); 
+
+        // Animación de las Habilidades
+        sr.reveal('.skill-group', {interval: 200, origin: 'bottom'});
+
+        // Animación de la Formación y Contacto
+        sr.reveal('.timeline', {origin: 'left'});
+        sr.reveal('.contact-methods', {origin: 'bottom'});
+    </script>
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+
+    <script>
+        const typed = new Typed('.typed-text', {
+            strings: ['Estudiante de Ingeniería.', 'Desarrollador Backend.', 'Amante de la Tecnología.', 'Futuro Ingeniero.'],
+            typeSpeed: 50,      // Velocidad de escritura
+            backSpeed: 30,      // Velocidad de borrado
+            backDelay: 2000,    // Tiempo de espera antes de borrar
+            loop: true          // Repetir el bucle
+        });
+    </script>
 </body>
 </html>
