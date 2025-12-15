@@ -404,6 +404,35 @@ body {
     transition: color 0.2s;
 }
 .contact-link:hover { color: var(--color-primary); }
+
+/* --- ESTILOS DE LOS FILTROS DE PROYECTOS --- */
+.project-filters {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    background-color: transparent;
+    border: 2px solid var(--color-primary);
+    color: var(--color-primary);
+    padding: 0.5rem 1.5rem;
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-family: var(--font-primary);
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+}
+
+
 /* --- 6. RESPONSIVE (Móviles) --- */
 
 @media (max-width: 768px) {
@@ -432,4 +461,13 @@ body {
     .bio-text {
         font-size: 1rem;
     }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease forwards;
 }

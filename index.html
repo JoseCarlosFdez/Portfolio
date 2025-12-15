@@ -49,41 +49,30 @@
             <h2 class="section-title"><i class="fas fa-cubes"></i> Proyectos Destacados</h2>
             <p class="section-subtitle">Una muestra de mis trabajos más relevantes.</p>
 
-            <div class="project-grid">
-                <article class="project-card">
-                    <h3>Laboratorio de Sistemas Distribuidos</h3>
-                    <p>Proyecto de prácticas con arquitectura de **sistemas distribuidos** usando **Python**, **Docker** e **Ice**. Microservicios y comunicación remota.</p>
-                    <a href="https://github.com/JoseCarlosFdez/Lab_SSDD" target="_blank" class="btn secondary-btn"><i class="fab fa-github"></i> Ver en GitHub</a>
-                </article>
-
-                <article class="project-card">
-                    <h3>App de Cartas Pokémon </h3>
-                    <p>Aplicación web para el intercambio seguro de cartas físicas. Desarrollo Full Stack enfocado en usabilidad.</p>
-                    <a href="https://github.com/JoseCarlosFdez/Lab_SSDD" target="_blank" class="btn secondary-btn"><i class="fab fa-github"></i> Ver en GitHub</a>
-                </article>
-
-                <article class="project-card">
-                    <h3>Creación de Pokémon (IPOII)</h3>
-                    <p>Diseño y programación de una criatura con habilidades propias. Demostración de lógica de programación y POO.</p>
-                    <a href="https://github.com/JoseCarlosFdez/Corphish_laboratorio_IPOII" target="_blank" class="btn secondary-btn"><i class="fab fa-github"></i> Ver en GitHub</a>
-                </article>
+            <div class="project-filters">
+                <button class="filter-btn active" data-filter="all">Todos</button>
+                <button class="filter-btn" data-filter="backend">Backend / Python</button>
+                <button class="filter-btn" data-filter="web">Web / Frontend</button>
             </div>
+
+            <div class="project-grid" id="projects-container">
+                </div>
         </section>
 
         <section id="habilidades" class="skills-section container">
-    <h2 class="section-title"><i class="fas fa-cogs"></i> Habilidades Técnicas</h2>
-    <p class="section-subtitle">Tecnologías y herramientas que domino.</p>
+            <h2 class="section-title"><i class="fas fa-cogs"></i> Habilidades Técnicas</h2>
+            <p class="section-subtitle">Tecnologías y herramientas que domino.</p>
 
-    <div class="skills-grid"> 
-        
-        <div class="skill-group">
-            <h3><i class="fas fa-code"></i> Lenguajes</h3>
-            <ul class="skill-list">
-                <li class="skill-item">Python</li>
-                <li class="skill-item">Java</li>
-                <li class="skill-item">C++</li>
-            </ul>
-        </div>
+            <div class="skills-grid"> 
+                
+                <div class="skill-group">
+                    <h3><i class="fas fa-code"></i> Lenguajes</h3>
+                    <ul class="skill-list">
+                        <li class="skill-item">Python</li>
+                        <li class="skill-item">Java</li>
+                        <li class="skill-item">C++</li>
+                    </ul>
+                </div>
 
         <div class="skill-group">
             <h3><i class="fas fa-layer-group"></i> Frameworks</h3>
@@ -200,6 +189,81 @@
             backDelay: 2000,    // Tiempo de espera antes de borrar
             loop: true          // Repetir el bucle
         });
+    </script>
+    <script>
+    // 1. "BASE DE DATOS" DE TUS PROYECTOS (Array de Objetos JSON)
+    const projectsData = [
+        {
+            title: "Laboratorio Sistemas Distribuidos",
+            desc: "Arquitectura de sistemas distribuidos usando Python, Docker e Ice. Microservicios y comunicación.",
+            tech: "Backend",
+            category: "backend", // Categoría para filtrar
+            link: "https://github.com/JoseCarlosFdez/Lab_SSDD"
+        },
+        {
+            title: "App Intercambio Pokémon",
+            desc: "Aplicación web para intercambio de cartas. Desarrollo Full Stack enfocado en usabilidad.",
+            tech: "Web / Frontend",
+            category: "web",
+            link: "https://github.com/JoseCarlosFdez/Lab_SSDD"
+        },
+        {
+            title: "Creación de Pokémon (IPOII)",
+            desc: "Diseño y programación de criatura con habilidades propias. Lógica de programación y POO.",
+            tech: "Java / Lógica",
+            category: "backend",
+            link: "https://github.com/JoseCarlosFdez/Corphish_laboratorio_IPOII"
+        },
+        // ¡Aquí puedes añadir más proyectos fácilmente sin tocar el HTML!
+    ];
+
+    // 2. REFERENCIAS AL DOM
+    const container = document.getElementById('projects-container');
+    const filterBtns = document.querySelectorAll('.filter-btn');
+
+    // 3. FUNCIÓN PARA RENDERIZAR (DIBUJAR) PROYECTOS
+    function displayProjects(category) {
+        // Limpiamos el contenedor
+        container.innerHTML = '';
+
+        // Filtramos los datos
+        const filteredProjects = category === 'all' 
+            ? projectsData 
+            : projectsData.filter(project => project.category === category);
+
+        // Generamos el HTML para cada proyecto filtrado
+        filteredProjects.forEach(project => {
+            const projectHTML = `
+                <article class="project-card fade-in">
+                    <h3>${project.title}</h3>
+                    <p>${project.desc}</p>
+                    <div style="margin-bottom: 1rem;">
+                        <span class="skill-item" style="font-size: 0.8rem;">${project.tech}</span>
+                    </div>
+                    <a href="${project.link}" target="_blank" class="btn secondary-btn">
+                        <i class="fab fa-github"></i> Ver en GitHub
+                    </a>
+                </article>
+            `;
+            container.innerHTML += projectHTML;
+        });
+    }
+
+    // 4. EVENT LISTENERS PARA LOS BOTONES
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            // Quitar clase 'active' a todos y ponerla al clickeado
+            filterBtns.forEach(b => b.classList.remove('active'));
+            e.target.classList.add('active');
+
+            // Filtrar
+            const filterValue = e.target.getAttribute('data-filter');
+            displayProjects(filterValue);
+        });
+    });
+
+    // 5. CARGAR TODOS AL INICIO
+    displayProjects('all');
     </script>
 </body>
 </html>
