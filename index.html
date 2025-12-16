@@ -8,6 +8,11 @@
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
+    <div class="poke-progress-container">
+        <div class="poke-progress-bar" id="pokeBar">
+            <div class="pokeball-icon"><i class="fas fa-dot-circle"></i></div>
+        </div>
+    </div>
     <header class="main-header">
         <div class="container">
             <h1 class="logo">José Carlos Fernández</h1>
@@ -144,6 +149,9 @@
 
     <footer class="main-footer">
         <div class="container">
+            <div class="pokemon-walk-container">
+                <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/pikachu.gif" alt="Pikachu caminando" class="pixel-mon">
+            </div>
             <p>&copy; 2025 José Carlos Fernández | Desarrollador en formación.</p>
         </div>
     </footer>
@@ -264,6 +272,20 @@
 
     // 5. CARGAR TODOS AL INICIO
     displayProjects('all');
+    </script>
+
+    <script>
+    // Lógica de la Barra de Progreso
+    window.onscroll = function() {
+        let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        let scrolled = (winScroll / height) * 100;
+        document.getElementById("pokeBar").style.width = scrolled + "%";
+        
+        // Rotación dinámica: La bola gira más rápido si scrolleas
+        const ball = document.querySelector('.pokeball-icon');
+        ball.style.transform = "rotate(" + winScroll + "deg)";
+    };
     </script>
 </body>
 </html>

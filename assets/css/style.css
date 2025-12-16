@@ -107,14 +107,24 @@ body {
 }
 
 .profile-pic {
-    width: 180px;
-    height: 180px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: var(--spacing-md);
-    border: 5px solid var(--color-white);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    /* ... tus estilos actuales ... */
+    cursor: pointer; /* Manita al pasar el ratón */
+    transition: transform 0.3s;
 }
+
+/* Animación al pasar el ratón (Hover) */
+.profile-pic:hover {
+    animation: catchShake 1.25s cubic-bezier(.36,.07,.19,.97) both;
+    border-color: #ff0000; /* El borde se pone rojo */
+}
+
+@keyframes catchShake {
+  10%, 90% { transform: translate3d(-1px, 0, 0) rotate(-10deg); }
+  20%, 80% { transform: translate3d(2px, 0, 0) rotate(10deg); }
+  30%, 50%, 70% { transform: translate3d(-4px, 0, 0) rotate(-10deg); }
+  40%, 60% { transform: translate3d(4px, 0, 0) rotate(10deg); }
+}
+
 
 .hero-title {
     font-size: 2.8rem;
@@ -470,4 +480,26 @@ body {
 
 .fade-in {
     animation: fadeIn 0.5s ease forwards;
+
+}  
+.pokemon-walk-container {
+    width: 100%;
+    overflow: hidden; /* Para que no se salga de la pantalla */
+    margin-bottom: 10px;
+    position: relative;
+    height: 50px; /* Altura suficiente para el sprite */
+}
+
+.pixel-mon {
+    position: absolute;
+    left: -50px; /* Empieza fuera de la pantalla */
+    animation: walkAcross 15s linear infinite; /* Tarda 15s en cruzar */
+}
+
+@keyframes walkAcross {
+    0% { left: -50px; transform: scaleX(1); } /* Mira a la derecha */
+    45% { left: 100%; transform: scaleX(1); } /* Llega al final */
+    50% { left: 100%; transform: scaleX(-1); } /* Se da la vuelta (espejo) */
+    95% { left: -50px; transform: scaleX(-1); } /* Vuelve al inicio */
+    100% { left: -50px; transform: scaleX(1); } /* Se gira de nuevo */
 }
