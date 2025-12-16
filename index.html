@@ -170,56 +170,56 @@
             </div>
         </footer>
 
-        <script src="https://unpkg.com/scrollreveal"></script>
+       <audio id="hover-sound" src="https://assets.mixkit.co/active_storage/sfx/2571/2571-preview.mp3"></audio>
+    
+    <button id="escape-rope" onclick="scrollToTop()" title="Usar Cuerda Huida" style="display: none;">
+        <img src="https://img.pokemondb.net/sprites/items/escape-rope.png" alt="Cuerda Huida">
+    </button>
+    
+    <div id="game-toast"></div> <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
 
-        <script>
-            const sr = ScrollReveal({
-                origin: 'top',
-                distance: '60px',
-                duration: 2500,
-                delay: 400,
-                // reset: true // Si quieres que la animación se repita al subir y bajar
-            });
+    <script>
+        /* =========================================
+           1. CONFIGURACIÓN VISUAL (ScrollReveal & Typed)
+           ========================================= */
+        const sr = ScrollReveal({
+            origin: 'top',
+            distance: '60px',
+            duration: 2500,
+            delay: 400,
+        });
 
-            // Animación del Hero (Inicio)
-            sr.reveal('.hero-content .profile-pic', {origin: 'top', delay: 500});
-            sr.reveal('.hero-content hgroup', {origin: 'bottom', delay: 600});
-            sr.reveal('.hero-content .bio-text', {origin: 'bottom', delay: 700});
-            sr.reveal('.hero-content .btn', {origin: 'bottom', delay: 800});
+        // Animaciones
+        sr.reveal('.hero-content .profile-pic', {origin: 'top', delay: 500});
+        sr.reveal('.hero-content hgroup', {origin: 'bottom', delay: 600});
+        sr.reveal('.hero-content .bio-text', {origin: 'bottom', delay: 700});
+        sr.reveal('.hero-content .btn', {origin: 'bottom', delay: 800});
+        sr.reveal('.section-title', {origin: 'left', distance: '100px', interval: 100});
+        sr.reveal('.section-subtitle', {origin: 'right', delay: 200});
+        sr.reveal('.project-card', {interval: 200}); 
+        sr.reveal('.skill-group', {interval: 200, origin: 'bottom'});
+        sr.reveal('.timeline', {origin: 'left'});
+        sr.reveal('.contact-methods', {origin: 'bottom'});
 
-            // Animación común para los títulos de sección
-            sr.reveal('.section-title', {origin: 'left', distance: '100px', interval: 100});
-            sr.reveal('.section-subtitle', {origin: 'right', delay: 200});
+        // Texto "Máquina de escribir"
+        const typed = new Typed('.typed-text', {
+            strings: ['Estudiante de Ingeniería.', 'Desarrollador Backend.', 'Entrenador Pokémon.', 'Futuro Ingeniero.'],
+            typeSpeed: 50,
+            backSpeed: 30,
+            backDelay: 2000,
+            loop: true
+        });
 
-            // Animación de las Tarjetas de Proyectos (efecto cascada)
-            sr.reveal('.project-card', {interval: 200}); 
-
-            // Animación de las Habilidades
-            sr.reveal('.skill-group', {interval: 200, origin: 'bottom'});
-
-            // Animación de la Formación y Contacto
-            sr.reveal('.timeline', {origin: 'left'});
-            sr.reveal('.contact-methods', {origin: 'bottom'});
-        </script>
-        <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
-
-        <script>
-            const typed = new Typed('.typed-text', {
-                strings: ['Estudiante de Ingeniería.', 'Desarrollador Backend.', 'Amante de la Tecnología.', 'Futuro Ingeniero.'],
-                typeSpeed: 50,      // Velocidad de escritura
-                backSpeed: 30,      // Velocidad de borrado
-                backDelay: 2000,    // Tiempo de espera antes de borrar
-                loop: true          // Repetir el bucle
-            });
-        </script>
-        <script>
-        // 1. "BASE DE DATOS" DE TUS PROYECTOS (Array de Objetos JSON)
+        /* =========================================
+           2. LÓGICA DE PROYECTOS (Filtros)
+           ========================================= */
         const projectsData = [
             {
                 title: "Laboratorio Sistemas Distribuidos",
                 desc: "Arquitectura de sistemas distribuidos usando Python, Docker e Ice. Microservicios y comunicación.",
                 tech: "Backend",
-                category: "backend", // Categoría para filtrar
+                category: "backend",
                 link: "https://github.com/JoseCarlosFdez/Lab_SSDD"
             },
             {
@@ -235,25 +235,19 @@
                 tech: "Java / Lógica",
                 category: "backend",
                 link: "https://github.com/JoseCarlosFdez/Corphish_laboratorio_IPOII"
-            },
-            // ¡Aquí puedes añadir más proyectos fácilmente sin tocar el HTML!
+            }
         ];
 
-        // 2. REFERENCIAS AL DOM
         const container = document.getElementById('projects-container');
         const filterBtns = document.querySelectorAll('.filter-btn');
 
-        // 3. FUNCIÓN PARA RENDERIZAR (DIBUJAR) PROYECTOS
         function displayProjects(category) {
-            // Limpiamos el contenedor
+            if(!container) return;
             container.innerHTML = '';
-
-            // Filtramos los datos
             const filteredProjects = category === 'all' 
                 ? projectsData 
                 : projectsData.filter(project => project.category === category);
 
-            // Generamos el HTML para cada proyecto filtrado
             filteredProjects.forEach(project => {
                 const projectHTML = `
                     <article class="project-card fade-in">
@@ -271,148 +265,116 @@
             });
         }
 
-        // 4. EVENT LISTENERS PARA LOS BOTONES
         filterBtns.forEach(btn => {
             btn.addEventListener('click', (e) => {
-                // Quitar clase 'active' a todos y ponerla al clickeado
                 filterBtns.forEach(b => b.classList.remove('active'));
                 e.target.classList.add('active');
-
-                // Filtrar
-                const filterValue = e.target.getAttribute('data-filter');
-                displayProjects(filterValue);
+                displayProjects(e.target.getAttribute('data-filter'));
             });
         });
-
-        // 5. CARGAR TODOS AL INICIO
+        
+        // Cargar proyectos al inicio
         displayProjects('all');
-        </script>
 
-        <script>
-        // Lógica de la Barra de Progreso
+        /* =========================================
+           3. API POKÉMON (Mi Equipo)
+           ========================================= */
+        const teamContainer = document.getElementById('poke-team');
+        const myTeamIds = [472, 717, 94, 745, 724, 448]; 
+
+        async function fetchTeam() {
+            if (!teamContainer) return;
+            teamContainer.innerHTML = ''; 
+            
+            for (const id of myTeamIds) {
+                try {
+                    const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
+                    const data = await response.json();
+                    
+                    const card = document.createElement('div');
+                    card.style.cssText = "text-align: center; font-size: 0.8rem; animation: fadeIn 1s;";
+                    card.innerHTML = `
+                        <img src="${data.sprites.front_default}" alt="${data.name}" style="width: 96px; image-rendering: pixelated;">
+                        <p style="text-transform: capitalize; font-weight: bold;">${data.name}</p>
+                    `;
+                    teamContainer.appendChild(card);
+                } catch (error) {
+                    console.error("Error capturando pokémon:", error);
+                }
+            }
+        }
+        fetchTeam();
+
+        /* =========================================
+           4. SONIDOS UI (Efecto Hover)
+           ========================================= */
+        const audio = document.getElementById("hover-sound");
+        if (audio) {
+            audio.volume = 0.2; 
+            const interactables = document.querySelectorAll('a, button, .skill-item');
+            interactables.forEach(el => {
+                el.addEventListener('mouseenter', () => {
+                    audio.currentTime = 0; 
+                    audio.play().catch(error => {}); // Evitar error si el navegador bloquea audio
+                });
+            });
+        }
+
+        /* =========================================
+           5. CÓDIGO KONAMI (Modo Legendario)
+           ========================================= */
+        const secretCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+        let currentSequence = [];
+
+        window.addEventListener('keydown', (e) => {
+            currentSequence.push(e.key);
+            currentSequence.splice(-secretCode.length - 1, currentSequence.length - secretCode.length);
+            if (currentSequence.join('').includes(secretCode.join(''))) {
+                document.body.classList.toggle('legendary-mode');
+                currentSequence = [];
+            }
+        });
+
+        /* =========================================
+           6. THEME SWITCHER (Iniciales)
+           ========================================= */
+        function changeTheme(type) {
+            const root = document.documentElement;
+            if (type === 'grass') root.style.setProperty('--color-primary', '#78C850');
+            else if (type === 'fire') root.style.setProperty('--color-primary', '#F08030');
+            else if (type === 'water') root.style.setProperty('--color-primary', '#6890F0');
+        }
+
+        /* =========================================
+           7. SCROLL (Barra de Progreso + Cuerda Huida)
+           ========================================= */
+        function scrollToTop() {
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+
+        // UNIFICAMOS TODO LO QUE PASA AL HACER SCROLL AQUÍ
         window.onscroll = function() {
             let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
             let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            let scrolled = (winScroll / height) * 100;
-            document.getElementById("pokeBar").style.width = scrolled + "%";
             
-            // Rotación dinámica: La bola gira más rápido si scrolleas
+            // 1. Barra de progreso y Pokéball
+            let scrolled = (winScroll / height) * 100;
+            const bar = document.getElementById("pokeBar");
             const ball = document.querySelector('.pokeball-icon');
-            ball.style.transform = "rotate(" + winScroll + "deg)";
-        };
-        </script>
-        <script>
-            const teamContainer = document.getElementById('poke-team');
-            // Elige los IDs de tus 6 Pokémon favoritos (Ej: 25=Pikachu, 6=Charizard, 94=Gengar)
-            const myTeamIds = [472, 717, 94, 745, 724, 448]; 
-
-            async function fetchTeam() {
-                teamContainer.innerHTML = ''; // Limpiar mensaje de carga
-                
-                for (const id of myTeamIds) {
-                    try {
-                        const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
-                        const data = await response.json();
-                        
-                        // Creamos la tarjeta HTML para cada Pokémon
-                        const card = document.createElement('div');
-                        card.style.cssText = "text-align: center; font-size: 0.8rem; animation: fadeIn 1s;";
-                        
-                        card.innerHTML = `
-                            <img src="${data.sprites.front_default}" alt="${data.name}" style="width: 96px; image-rendering: pixelated;">
-                            <p style="text-transform: capitalize; font-weight: bold;">${data.name}</p>
-                        `;
-                        teamContainer.appendChild(card);
-                    } catch (error) {
-                        console.error("Error capturando pokémon:", error);
-                    }
-                }
-            }
-
-            fetchTeam();
-        </script>
-        <audio id="hover-sound" src="https://assets.mixkit.co/active_storage/sfx/2571/2571-preview.mp3"></audio>
-        <script>
-            const audio = document.getElementById("hover-sound");
-            audio.volume = 0.2; // Bajar volumen para que no moleste
-
-            // Seleccionamos todos los botones y enlaces
-            const interactables = document.querySelectorAll('a, button, .skill-item');
-
-            interactables.forEach(el => {
-                el.addEventListener('mouseenter', () => {
-                    audio.currentTime = 0; // Reinicia el sonido si ya estaba sonando
-                    audio.play().catch(error => console.log("Audio bloqueado por navegador"));
-                });
-            });
-        </script>
-        <script>
-            // Secuencia Konami Code: Arriba, Arriba, Abajo, Abajo, Izquierda, Derecha, Izquierda, Derecha, B, A
-            const secretCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
-            let currentSequence = [];
-
-            window.addEventListener('keydown', (e) => {
-                currentSequence.push(e.key);
-                
-                // Mantener el array del tamaño correcto
-                currentSequence.splice(-secretCode.length - 1, currentSequence.length - secretCode.length);
-
-                // Comprobar si coincide
-                if (currentSequence.join('').includes(secretCode.join(''))) {
-                    
-                    // ACTIVAR/DESACTIVAR LA CLASE LEGENDARIA
-                    document.body.classList.toggle('legendary-mode');
-                    
-                    // Opcional: Reproducir sonido de "Secreto descubierto" (Como en Zelda o Pokémon)
-                    // const audio = new Audio('https://www.myinstants.com/media/sounds/pokemon-level-up.mp3');
-                    // audio.volume = 0.3;
-                    // audio.play();
-
-                    // Reiniciar secuencia para que no se active dos veces seguidas por error
-                    currentSequence = [];
-                }
-            });
-        </script>
-        <script>
-            function changeTheme(type) {
-                const root = document.documentElement;
-                
-                if (type === 'grass') {
-                    root.style.setProperty('--color-primary', '#78C850'); // Verde Bulbasaur
-                    // Opcional: Cambiar sonido o imagen
-                } else if (type === 'fire') {
-                    root.style.setProperty('--color-primary', '#F08030'); // Naranja Charmander
-                } else if (type === 'water') {
-                    root.style.setProperty('--color-primary', '#6890F0'); // Azul Squirtle
-                }
-            }
-        </script>
-
-        <script>
-            // Mostrar botón al bajar 300px
-            window.onscroll = function() {
-                // Mantenemos la lógica de la barra de progreso que ya tenías...
-                let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-                let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-                let scrolled = (winScroll / height) * 100;
-                document.getElementById("pokeBar").style.width = scrolled + "%";
-                
-                // NUEVA LÓGICA CUERDA HUIDA
-                const ropeBtn = document.getElementById("escape-rope");
-                if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+            
+            if(bar) bar.style.width = scrolled + "%";
+            if(ball) ball.style.transform = "rotate(" + winScroll + "deg)";
+            
+            // 2. Mostrar/Ocultar Cuerda Huida
+            const ropeBtn = document.getElementById("escape-rope");
+            if (ropeBtn) {
+                if (winScroll > 300) {
                     ropeBtn.style.display = "flex";
                 } else {
                     ropeBtn.style.display = "none";
                 }
-            };
-
-            // Función para subir
-            function scrollToTop() {
-                window.scrollTo({top: 0, behavior: 'smooth'});
             }
-        </script>
-        <button id="escape-rope" onclick="scrollToTop()" title="Usar Cuerda Huida">
-            <img src="https://img.pokemondb.net/sprites/items/escape-rope.png" alt="Cuerda Huida">
-        </button>
-    </body>
+        };
+    </script>
+</body>
 </html>
