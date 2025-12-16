@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html lang="es">
     <head>
+        <meta property="og:title" content="José Carlos Fernández - Ingeniero Informático">
+        <meta property="og:description" content="Portfolio interactivo de desarrollo software, backend y sistemas.">
+        <meta property="og:image" content="assets/img/profile.png"> <meta property="og:url" content="https://tu-url-de-github.com">
+        <meta property="og:type" content="website">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>José Carlos Fernández - Portfolio de Ingeniería Informática</title>
-        
+        <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" ... />
         
         <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
@@ -383,6 +387,32 @@
                 }
             }
         </script>
-        
+
+        <script>
+            // Mostrar botón al bajar 300px
+            window.onscroll = function() {
+                // Mantenemos la lógica de la barra de progreso que ya tenías...
+                let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+                let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                let scrolled = (winScroll / height) * 100;
+                document.getElementById("pokeBar").style.width = scrolled + "%";
+                
+                // NUEVA LÓGICA CUERDA HUIDA
+                const ropeBtn = document.getElementById("escape-rope");
+                if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                    ropeBtn.style.display = "flex";
+                } else {
+                    ropeBtn.style.display = "none";
+                }
+            };
+
+            // Función para subir
+            function scrollToTop() {
+                window.scrollTo({top: 0, behavior: 'smooth'});
+            }
+        </script>
+        <button id="escape-rope" onclick="scrollToTop()" title="Usar Cuerda Huida">
+            <img src="https://img.pokemondb.net/sprites/items/escape-rope.png" alt="Cuerda Huida">
+        </button>
     </body>
 </html>

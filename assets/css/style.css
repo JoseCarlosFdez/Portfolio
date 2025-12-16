@@ -698,3 +698,30 @@ body.legendary-mode a {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(5px); }
 }
+
+#escape-rope {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999;
+    background: white;
+    border: 2px solid #505050;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    transition: transform 0.2s;
+    align-items: center;
+    justify-content: center;
+}
+
+#escape-rope:hover {
+    transform: scale(1.1) translateY(-3px);
+    background-color: #f0f0f0;
+}
+
+#escape-rope img {
+    width: 30px;
+}
