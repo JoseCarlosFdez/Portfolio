@@ -9,10 +9,10 @@
         <link rel="stylesheet" href="assets/css/style.css">
     </head>
     <body>
-        <div class="poke-progress-container">
-            <div class="poke-progress-bar" id="pokeBar">
-                <div class="pokeball-icon"><i class="fas fa-dot-circle"></i></div>
-            </div>
+        <div class="starter-selection">
+            <div class="starter-btn" onclick="changeTheme('grass')" title="Elige Planta">🍃</div>
+            <div class="starter-btn" onclick="changeTheme('fire')" title="Elige Fuego">🔥</div>
+            <div class="starter-btn" onclick="changeTheme('water')" title="Elige Agua">💧</div>
         </div>
         <header class="main-header">
             <div class="container">
@@ -297,7 +297,7 @@
         <script>
             const teamContainer = document.getElementById('poke-team');
             // Elige los IDs de tus 6 Pokémon favoritos (Ej: 25=Pikachu, 6=Charizard, 94=Gengar)
-            const myTeamIds = [25, 6, 94, 130, 149, 448]; 
+            const myTeamIds = [472, 717, 94, 745, 724, 448]; 
 
             async function fetchTeam() {
                 teamContainer.innerHTML = ''; // Limpiar mensaje de carga
@@ -366,5 +366,28 @@
                 }
             });
         </script>
+        <script>
+            function changeTheme(type) {
+                const root = document.documentElement;
+                
+                if (type === 'grass') {
+                    root.style.setProperty('--color-primary', '#78C850'); // Verde Bulbasaur
+                    // Opcional: Cambiar sonido o imagen
+                } else if (type === 'fire') {
+                    root.style.setProperty('--color-primary', '#F08030'); // Naranja Charmander
+                } else if (type === 'water') {
+                    root.style.setProperty('--color-primary', '#6890F0'); // Azul Squirtle
+                }
+            }
+        </script>
+        <script>
+            function showToast(message) {
+                var x = document.getElementById("game-toast");
+                x.innerText = message;
+                x.className = "show";
+                setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+            }
+        </script>
     </body>
 </html>
+<div id="game-toast"></div>
