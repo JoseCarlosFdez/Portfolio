@@ -34,20 +34,18 @@ body {
     font-family: var(--font-primary);
     line-height: 1.6;
     color: var(--color-dark);
-    
-    /* FONDO DE CUADRÍCULA (GRID) */
+    background-color: var(--color-light);
+    transition: background-color 0.3s;
+    cursor: url('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png'), auto;
     background-color: #f8f9fa;
     background-image: 
         linear-gradient(#e8e8e8 1px, transparent 1px),
         linear-gradient(90deg, #e8e8e8 1px, transparent 1px);
-    background-size: 40px 40px;
+    background-size: 40px 40px; /* Tamaño de la cuadrícula */
     background-position: center top;
-    
-    /* CURSOR DE POKÉBALL */
-    /* Importante: la coma y la palabra 'auto' al final son OBLIGATORIAS */
-    cursor: url('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png'), auto;
-    
-    transition: background-color 0.3s;
+}
+a, button, .btn, .profile-pic, .skill-item {
+    cursor: url('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/master-ball.png'), pointer;
 }
 
 /* Contenedor centralizado para ancho máximo */
