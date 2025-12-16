@@ -77,22 +77,6 @@ a, button, .btn, .profile-pic, .skill-item {
     color: var(--color-dark);
     text-transform: uppercase;
 }
-/* Aplicar fuente retro a Logotipo y Títulos de Sección */
-.logo, .section-title, .skill-group h3 {
-    font-family: 'Press Start 2P', cursive;
-    letter-spacing: -1px; /* Queda mejor más juntita */
-}
-
-.logo {
-    font-size: 1.2rem; /* Ajuste de tamaño */
-    color: var(--color-primary); /* Que coja el color del tema */
-    text-shadow: 2px 2px 0px #000; /* Sombra dura retro */
-}
-
-.section-title {
-    font-size: 1.4rem;
-    line-height: 1.5;
-}
 
 .nav-list {
     list-style: none;
@@ -432,37 +416,12 @@ a, button, .btn, .profile-pic, .skill-item {
 
 /* --- ESTILOS DE CONTACTO --- */
 .contact-methods {
-    max-width: 650px;
+    max-width: 600px;
     margin: 0 auto;
-    background-color: #ffffff;
-    padding: 2rem;
-    
-    /* ESTILO CAJA DE BATALLA GAMEBOY */
-    border: 4px solid #505050; /* Borde exterior gris oscuro */
-    outline: 4px solid #f8f9fa; /* Espacio entre bordes (color de fondo de la web) */
-    box-shadow: 
-        0 0 0 8px #505050, /* Borde exterior doble */
-        0 10px 20px rgba(0,0,0,0.2); /* Sombra suave para levantarla */
-        
-    border-radius: 4px; /* Un poco cuadrado */
-    position: relative;
-}
-.contact-methods::after {
-    content: '';
-    position: absolute;
-    bottom: 15px;
-    right: 15px;
-    width: 0; 
-    height: 0; 
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    border-top: 10px solid #cc0000; /* Triángulo rojo */
-    animation: bounce 1s infinite;
-}
-
-@keyframes bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(5px); }
+    background-color: var(--color-white);
+    padding: var(--spacing-lg);
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }
 
 .contact-list { list-style: none; padding-left: 0; }
@@ -670,17 +629,72 @@ body.legendary-mode a {
     box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
 
-#game-toast.show {
-    visibility: visible;
-    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+/* ======================================================
+   NUEVOS ESTILOS POKÉMON (TIPOGRAFÍA Y CAJA DE BATALLA)
+   ====================================================== */
+
+/* 1. TIPOGRAFÍA RETRO PARA TÍTULOS */
+.logo, .section-title, .skill-group h3 {
+    font-family: 'Press Start 2P', cursive; /* Fuente pixelada */
+    letter-spacing: -1px; /* Letras un poco más juntas */
 }
 
-@keyframes fadein {
-    from {bottom: 0; opacity: 0;}
-    to {bottom: 30px; opacity: 1;}
+/* Ajustes específicos para el Logo */
+.logo {
+    font-size: 1.1rem; /* Un poco más pequeño porque esta fuente es grande */
+    color: var(--color-primary); 
+    text-shadow: 2px 2px 0px #000; /* Sombra negra sólida */
+    line-height: 1.5;
 }
 
-@keyframes fadeout {
-    from {bottom: 30px; opacity: 1;}
-    to {bottom: 0; opacity: 0;}
+/* Ajustes para los títulos de sección */
+.section-title {
+    font-size: 1.3rem;
+    line-height: 1.6;
+    margin-top: 1rem;
+}
+
+/* Ajustes para los títulos de las habilidades */
+.skill-group h3 {
+    font-size: 0.9rem; /* Más pequeño para que quepa bien */
+}
+
+
+/* 2. CAJA DE DIÁLOGO DE BATALLA (SECCIÓN CONTACTO) */
+/* Esto sobreescribirá tu estilo anterior de .contact-methods */
+.contact-methods {
+    max-width: 650px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    padding: 2rem;
+    
+    /* BORDES ESTILO GAMEBOY */
+    border: 4px solid #505050;       /* Borde gris oscuro */
+    outline: 4px solid #f8f9fa;      /* Hueco (color del fondo de la web) */
+    box-shadow: 
+        0 0 0 8px #505050,           /* Segundo borde gris */
+        0 10px 20px rgba(0,0,0,0.2); /* Sombra suave */
+        
+    border-radius: 4px;
+    position: relative;
+}
+
+/* El triangulito rojo animado abajo a la derecha */
+.contact-methods::after {
+    content: '';
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    width: 0; 
+    height: 0; 
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid #cc0000; /* Triángulo rojo */
+    animation: bounce 1s infinite;
+}
+
+/* Animación del triangulito */
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(5px); }
 }
