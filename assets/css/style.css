@@ -77,6 +77,22 @@ a, button, .btn, .profile-pic, .skill-item {
     color: var(--color-dark);
     text-transform: uppercase;
 }
+/* Aplicar fuente retro a Logotipo y Títulos de Sección */
+.logo, .section-title, .skill-group h3 {
+    font-family: 'Press Start 2P', cursive;
+    letter-spacing: -1px; /* Queda mejor más juntita */
+}
+
+.logo {
+    font-size: 1.2rem; /* Ajuste de tamaño */
+    color: var(--color-primary); /* Que coja el color del tema */
+    text-shadow: 2px 2px 0px #000; /* Sombra dura retro */
+}
+
+.section-title {
+    font-size: 1.4rem;
+    line-height: 1.5;
+}
 
 .nav-list {
     list-style: none;
@@ -416,12 +432,37 @@ a, button, .btn, .profile-pic, .skill-item {
 
 /* --- ESTILOS DE CONTACTO --- */
 .contact-methods {
-    max-width: 600px;
+    max-width: 650px;
     margin: 0 auto;
-    background-color: var(--color-white);
-    padding: var(--spacing-lg);
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    background-color: #ffffff;
+    padding: 2rem;
+    
+    /* ESTILO CAJA DE BATALLA GAMEBOY */
+    border: 4px solid #505050; /* Borde exterior gris oscuro */
+    outline: 4px solid #f8f9fa; /* Espacio entre bordes (color de fondo de la web) */
+    box-shadow: 
+        0 0 0 8px #505050, /* Borde exterior doble */
+        0 10px 20px rgba(0,0,0,0.2); /* Sombra suave para levantarla */
+        
+    border-radius: 4px; /* Un poco cuadrado */
+    position: relative;
+}
+.contact-methods::after {
+    content: '';
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    width: 0; 
+    height: 0; 
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid #cc0000; /* Triángulo rojo */
+    animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(5px); }
 }
 
 .contact-list { list-style: none; padding-left: 0; }
