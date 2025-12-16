@@ -36,6 +36,16 @@ body {
     color: var(--color-dark);
     background-color: var(--color-light);
     transition: background-color 0.3s;
+    cursor: url('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png'), auto;
+    background-color: #f8f9fa;
+    background-image: 
+        linear-gradient(#e8e8e8 1px, transparent 1px),
+        linear-gradient(90deg, #e8e8e8 1px, transparent 1px);
+    background-size: 40px 40px; /* Tamaño de la cuadrícula */
+    background-position: center top;
+}
+a, button, .btn, .profile-pic, .skill-item {
+    cursor: url('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/master-ball.png'), pointer;
 }
 
 /* Contenedor centralizado para ancho máximo */
@@ -318,22 +328,26 @@ body {
     gap: 10px;
 }
 
+/* Estilo base tipo "Normal" para todas las skills */
 .skill-item {
-    background-color: #f8f9fa;
-    color: #495057;
-    padding: 6px 14px;
-    border-radius: 50px;
-    font-size: 0.9rem;
-    font-weight: 500;
-    border: 1px solid #e9ecef;
+    background-color: #A8A77A; /* Color del tipo Normal */
+    color: white;
+    padding: 4px 12px;
+    border-radius: 4px; /* Un poco más cuadrado como en los juegos */
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase; /* Todo en mayúsculas */
+    letter-spacing: 1px;
+    border: 1px solid rgba(0,0,0,0.2);
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.3); /* Sombra en el texto para legibilidad */
     transition: all 0.2s;
+    display: inline-block; /* Asegura que se comporten como bloques */
 }
 
 .skill-item:hover {
-    background-color: var(--color-primary);
-    color: white;
-    border-color: var(--color-primary);
-    transform: scale(1.05);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    filter: brightness(1.1); /* Brilla al pasar el ratón */
 }
 
 /* --- ESTILOS DE FORMACIÓN (TIMELINE) --- */
