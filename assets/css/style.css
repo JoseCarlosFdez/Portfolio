@@ -517,3 +517,46 @@ a, button, .btn, .profile-pic, .skill-item {
     95% { left: -50px; transform: scaleX(-1); } /* Vuelve al inicio */
     100% { left: -50px; transform: scaleX(1); } /* Se gira de nuevo */
 }
+/* --- ESTILOS DEL MODO LEGENDARIO (SECRET CODE) --- */
+
+/* Cuando el body tiene la clase 'legendary-mode' */
+body.legendary-mode {
+    /* Fondo de Mewtwo con una capa negra al 85% encima para que se lea el texto */
+    background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)), 
+                url('https://media.giphy.com/media/u1k1kpDZSw5os/giphy.gif');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    color: #f0f0f0; /* Texto claro */
+}
+
+/* Cambiamos las cajas blancas a cajas oscuras con borde dorado */
+body.legendary-mode .main-header,
+body.legendary-mode .project-card,
+body.legendary-mode .skill-group,
+body.legendary-mode .edu-item,
+body.legendary-mode .contact-methods,
+body.legendary-mode .main-footer {
+    background-color: rgba(30, 30, 30, 0.95); /* Gris muy oscuro casi negro */
+    color: #e0e0e0;
+    border-color: #d4af37; /* Borde Dorado */
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.3); /* Resplandor dorado */
+}
+
+/* Ajustes de texto específicos para el modo oscuro */
+body.legendary-mode .hero-title,
+body.legendary-mode .section-title,
+body.legendary-mode .logo {
+    color: #d4af37; /* Títulos dorados */
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+}
+
+body.legendary-mode .hero-subtitle,
+body.legendary-mode .bio-text {
+    color: #cccccc;
+}
+
+/* Ajuste de enlaces */
+body.legendary-mode a {
+    color: #76c7c0; /* Un color cian que se lee bien sobre negro */
+}
