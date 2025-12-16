@@ -521,13 +521,13 @@ a, button, .btn, .profile-pic, .skill-item {
 
 /* Cuando el body tiene la clase 'legendary-mode' */
 body.legendary-mode {
-    /* Fondo de Mewtwo con una capa negra al 85% encima para que se lea el texto */
+    /* Opción Mewtwo */
     background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)), 
-                url('https://media.giphy.com/media/u1k1kpDZSw5os/giphy.gif');
+                url('https://i.gifer.com/origin/28/2860d2d8c3a1141a5c6679d052b19532_w200.gif');
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
-    color: #f0f0f0; /* Texto claro */
+    color: #f0f0f0;
 }
 
 /* Cambiamos las cajas blancas a cajas oscuras con borde dorado */
