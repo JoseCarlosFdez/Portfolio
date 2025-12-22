@@ -725,3 +725,54 @@ body.legendary-mode a {
 #escape-rope img {
     width: 30px;
 }
+/* --- CORRECCIÓN DE HABILIDADES EN MODO LEGENDARIO --- */
+
+/* 1. Títulos de las categorías (Lenguajes, Frameworks...) */
+body.legendary-mode .skill-group h3 {
+    color: #d4af37; /* Color Dorado */
+    border-bottom-color: #d4af37; /* Línea inferior dorada */
+    text-shadow: 2px 2px 0px #000; /* Sombra para legibilidad */
+}
+
+/* 2. El círculo del icono junto al título */
+body.legendary-mode .skill-group h3 i {
+    background-color: #333; /* Fondo oscuro para el icono */
+    color: #d4af37; /* Icono dorado */
+    box-shadow: 0 0 5px rgba(212, 175, 55, 0.5); /* Pequeño brillo */
+}
+
+/* 3. Las etiquetas de habilidades (Python, Java...) */
+body.legendary-mode .skill-item {
+    background-color: #222; /* Fondo casi negro */
+    color: #d4af37; /* Texto Dorado */
+    border: 1px solid #d4af37; /* Borde fino dorado */
+    
+    /* Efecto de resplandor (Glow) */
+    box-shadow: 0 0 8px rgba(212, 175, 55, 0.3); 
+    text-shadow: none; /* Quitamos la sombra de texto anterior */
+}
+
+/* Efecto al pasar el ratón por las habilidades en modo legendario */
+body.legendary-mode .skill-item:hover {
+    background-color: #d4af37; /* Se vuelve dorado sólido */
+    color: #000; /* Texto negro */
+    transform: scale(1.1); /* Crece un poco más */
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.8); /* Brillo intenso */
+}
+
+/* --- SPRITE DEL FOOTER REACTIVO AL SCROLL --- */
+.scroll-sprite-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end; /* Alinea abajo para que no salte si la altura varía un píxel */
+    height: 60px; /* Altura fija para evitar saltos */
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+#scroll-reactive-sprite {
+    width: auto;
+    height: 48px; /* Tamaño del sprite */
+    image-rendering: pixelated; /* Crucial para que se vea nítido */
+    transition: opacity 0.1s ease-in-out; /* Transición suave opcional */
+}

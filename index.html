@@ -146,7 +146,7 @@
                     <ul class="contact-list">
                         <li>
                             <i class="fas fa-envelope-open-text"></i>
-                            <strong>Email:</strong> <a href="mailto:jcfernandezv01@gmail.com" class="contact-link">E-mail</a>
+                            <strong>Email:</strong> <a href="mailto:jcfernandezv01@gmail.com" class="contact-link">jcfernandezv01@gmail.com</a>
                         </li>
                         <li>
                             <i class="fab fa-linkedin"></i>
@@ -163,9 +163,10 @@
 
         <footer class="main-footer">
             <div class="container">
-                <div class="pokemon-walk-container">
-                    <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/pikachu.gif" alt="Pikachu caminando" class="pixel-mon">
+                <div class="scroll-sprite-container">
+                    <img id="scroll-reactive-sprite" src="https://img.pokemondb.net/sprites/black-white/normal/pikachu.png" alt="Sprite Reactivo">
                 </div>
+
                 <p>&copy; 2025 José Carlos Fernández | Desarrollador en formación.</p>
             </div>
         </footer>
@@ -181,8 +182,16 @@
 
     <script>
         /* =========================================
+        VARIABLES GLOBALES PARA EL SPRITE DEL FOOTER
+        ========================================= */
+        let isScrollingTimer; // Variable para guardar el temporizador
+        const spriteElement = document.getElementById('scroll-reactive-sprite');
+        // URLs de las imágenes (Estática y Corriendo)
+        const spriteStatic = 'https://img.pokemondb.net/sprites/black-white/normal/pikachu.png';
+        const spriteRunning = 'https://img.pokemondb.net/sprites/black-white/anim/normal/pikachu.gif';
+        /* =========================================
            1. CONFIGURACIÓN VISUAL (ScrollReveal & Typed)
-           ========================================= */
+            ========================================= */
         const sr = ScrollReveal({
             origin: 'top',
             distance: '60px',
@@ -235,6 +244,13 @@
                 tech: "Java / Lógica",
                 category: "backend",
                 link: "https://github.com/JoseCarlosFdez/Corphish_laboratorio_IPOII"
+            },
+            {
+                title: "Creación de videojuego 2D",
+                desc: "Desarrollo de un juego 2D en Godot sencillo.",
+                tech: "GDScript / Godot",
+                category: "web",
+                link: "https://github.com/JoseCarlosFdez/SuperAstroBros"
             }
         ];
 
@@ -352,7 +368,9 @@
             window.scrollTo({top: 0, behavior: 'smooth'});
         }
 
-        // UNIFICAMOS TODO LO QUE PASA AL HACER SCROLL AQUÍ
+        /* =========================================
+           FUNCIÓN ONSCROLL UNIFICADA
+           ========================================= */
         window.onscroll = function() {
             let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
             let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
@@ -373,6 +391,22 @@
                 } else {
                     ropeBtn.style.display = "none";
                 }
+            }
+
+            // 3. SPRITE REACTIVO (Pikachu corre al hacer scroll)
+            if (spriteElement) {
+                // Si estamos haciendo scroll, ponemos el GIF (si no está ya puesto)
+                if (spriteElement.src !== spriteRunning) {
+                    spriteElement.src = spriteRunning;
+                }
+
+                // Reiniciamos el contador cada vez que se detecta movimiento
+                clearTimeout(isScrollingTimer);
+
+                // Si pasan 150ms sin movimiento, volvemos a la imagen estática
+                isScrollingTimer = setTimeout(function() {
+                    spriteElement.src = spriteStatic;
+                }, 150);
             }
         };
     </script>
